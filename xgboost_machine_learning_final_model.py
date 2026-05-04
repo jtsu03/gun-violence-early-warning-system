@@ -6,9 +6,16 @@ import pandas as pd
 with open("xgboost_machine_learning_final_model.sav", "rb") as file:
     model = pickle.load(file)
 
-# Load the feature list
-with open("model_features.pkl", "rb") as file:
-    feature_cols = pickle.load(file)
+# Feature list hardcoded — no pkl needed
+feature_cols = [
+    'was_suppressed', 'spike', 'svi_unemp_rate', 'svi_no_hs_diploma',
+    'svi_uninsured', 'svi_age65_plus', 'svi_age17_under', 'svi_disabled',
+    'svi_single_parent', 'svi_minority', 'svi_limited_english', 'svi_multi_unit',
+    'svi_mobile_homes', 'svi_crowded_housing', 'svi_no_vehicle', 'svi_group_quarters',
+    'RPL_THEME1', 'RPL_THEME2', 'RPL_THEME3', 'RPL_THEME4', 'RPL_THEMES',
+    'svi_poverty_rate', 'svi_housing_burden', 'acs_poverty_rate',
+    'acs_unemp_rate', 'acs_median_income'
+]
 
 # Function to make predictions
 def predict_violence(model, input_df):
